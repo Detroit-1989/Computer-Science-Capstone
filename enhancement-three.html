@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CS 499 Enhancement Three narrative: database validation, filtering, and sorting in Travlr Getaways.">
+  <title>Enhancement Three | Databases</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .api-example {
+      padding: 15px 18px;
+      margin: 10px 0 22px;
+      background: #f3f6fa;
+      border: 1px solid #dce4ee;
+      border-radius: 8px;
+      overflow-x: auto;
+      font: 0.92rem/1.6 Consolas, "Courier New", monospace;
+      color: #203953;
+    }
+    .table-scroll { overflow-x: auto; margin: 12px 0 26px; }
+    .table-scroll:focus-visible { outline: 3px solid #16a6b6; }
+    .table-scroll table { width: 100%; border-collapse: collapse; min-width: 540px; font-size: .93rem; }
+    .table-scroll th, .table-scroll td { padding: 10px 12px; border: 1px solid #dce4ee; text-align: left; vertical-align: top; }
+    .table-scroll th { background: #e9f0f8; color: #142b49; }
+    .table-scroll tbody tr:nth-child(even) { background: #f7f9fc; }
+    .file-actions { margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <h1>Darius T. Wilder</h1>
+      <p class="subtitle">Enhancement Three: Databases</p>
+      <p class="university">CS 499 Computer Science Capstone · Southern New Hampshire University</p>
+    </div>
+  </header>
+  <nav class="main-navigation" aria-label="Portfolio navigation">
+    <a href="index.html">← Portfolio Home</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="index.html#code-review">Code Review</a>
+    <a href="index.html#software">Software Engineering</a>
+    <a href="index.html#algorithms">Algorithms</a>
+  </nav>
+  <main>
+    <section class="content-section" aria-labelledby="enhancement-three-title">
+      <h2 id="enhancement-three-title">Enhancement Three Narrative</h2>
+      <p><strong>Artifact:</strong> Travlr Getaways · MongoDB, Mongoose, and REST API enhancements</p>
+      <h3>Artifact Description</h3>
+      <p>The artifact selected for the database category is the Travlr Getaways full-stack web application, originally developed in CS 465: Full Stack Development in 2026. Travlr is a MEAN-stack application that uses MongoDB, Express.js, Angular, and Node.js. The application includes a customer-facing website and an administrative interface for managing vacation packages.</p>
+      <p>MongoDB provides persistent storage for the vacation-package records. Mongoose is used to define the application data model and establish communication between MongoDB and the server-side application. Express and Node.js provide RESTful API endpoints, while Angular provides the administrative user interface.</p>
+      <p>The original application supported the fundamental create, read, update, and delete operations needed to manage vacation packages. For the CS 499 database enhancement, I expanded the dataset to 20 vacation packages and strengthened the database functionality by improving schema validation and implementing database-side filtering and sorting through the REST API.</p>
+      <h3>Justification for Inclusion and Description of the Enhancement</h3>
+      <p>I selected the Travlr application because it demonstrates how a database functions as an integrated component of a complete software system rather than as an isolated storage mechanism. The artifact combines persistent data storage, schema modeling, API development, authentication, validation, and user-interface functionality.</p>
+      <p>One of the strongest aspects of the artifact is the relationship between MongoDB, Mongoose, Express, and Angular. Vacation-package information is stored as MongoDB documents. Mongoose defines how the application interprets those documents, Express exposes database operations through RESTful endpoints, and Angular consumes those endpoints to display and manage the information.</p>
+      <p>The original GET /api/trips operation retrieved the complete trip collection. I enhanced this operation so that the server can construct MongoDB queries from URL query parameters. The enhanced endpoint supports filtering vacation packages according to a maximum price and sorting records according to several criteria.</p>
+      <pre class="api-example"><code>/api/trips?maxPrice=2000
+/api/trips?sort=priceLow
+/api/trips?sort=priceHigh
+/api/trips?maxPrice=2000&amp;sort=priceLow</code></pre>
+      <p>The maximum-price query returns only vacation packages whose per-person price does not exceed the requested threshold. Sorting can be performed in ascending or descending numerical price order, and filtering and sorting can be combined in the same request. I also added query validation so that a negative maximum price is rejected with an HTTP 400 response rather than being passed into the database query.</p>
+      <pre class="api-example"><code>/api/trips?maxPrice=-100</code></pre>
+      <p>An important improvement involved the Mongoose schema for the perPerson field. During testing, I discovered that the field had originally been defined as a String in the Mongoose schema even though MongoDB stored the vacation-package prices as numeric values. This mismatch caused inconsistent behavior when filtering and sorting records through the API.</p>
+      <pre class="api-example"><code>perPerson: {
+    type: Number,
+    required: true,
+    min: 0
+}</code></pre>
+      <p>Changing perPerson to Number aligned the application model with the actual MongoDB data and added validation that prevents negative trip prices. I verified the existing MongoDB collection using aggregation and direct queries. The collection contained 16 integer price values and four double values, so all 20 prices were already stored as numeric BSON types. A direct MongoDB query confirmed that 15 vacation packages met the $2,000 maximum-price condition. After the Mongoose schema correction, the REST API returned those same 15 records successfully.</p>
+      <h3>Verification Results</h3>
+      <div class="table-scroll" role="region" aria-label="API verification results" tabindex="0">
+        <table><thead><tr><th scope="col">Test</th><th scope="col">Expected Behavior</th><th scope="col">Result</th></tr></thead>
+          <tbody>
+            <tr><td>GET /api/trips</td><td>Return all vacation packages</td><td>Passed</td></tr>
+            <tr><td>?maxPrice=2000</td><td>Return 15 packages priced at or below $2,000</td><td>Passed</td></tr>
+            <tr><td>?sort=priceLow</td><td>Sort numerically from lowest to highest price</td><td>Passed</td></tr>
+            <tr><td>?sort=priceHigh</td><td>Sort numerically from highest to lowest price</td><td>Passed</td></tr>
+            <tr><td>?maxPrice=2000&amp;sort=priceLow</td><td>Filter and sort the same result set</td><td>Passed</td></tr>
+            <tr><td>?maxPrice=-100</td><td>Reject invalid negative input with HTTP 400</td><td>Passed</td></tr>
+          </tbody></table>
+      </div>
+      <p>The artifact also retains its existing CRUD functionality. The application can retrieve trip records, retrieve individual records, create new trips, update existing trips, and delete trips. Creation, update, and deletion routes are protected through authentication, and the API includes error handling for missing fields, invalid identifiers, duplicate trip codes, and validation errors. Together, these improvements demonstrate database modeling, persistent storage, validation, query construction, RESTful API design, data integrity, and full-stack database integration.</p>
+      <h3>Course Outcomes</h3>
+      <p>This enhancement most strongly demonstrates the course outcome requiring students to use well-founded and innovative techniques, skills, and tools in computing practices to implement computing solutions that deliver value and accomplish industry-specific goals. The enhancement uses MongoDB, Mongoose, Express, Node.js, and RESTful API techniques to create a data-driven application in which users can efficiently retrieve and manage vacation-package information.</p>
+      <p>The artifact also demonstrates progress toward the outcome requiring students to design and evaluate computing solutions using algorithmic principles and computer science practices while managing design trade-offs. One design decision involved determining where filtering and sorting should occur. Earlier functionality demonstrated client-side filtering, while this enhancement demonstrates how database queries can perform similar operations before records are transmitted to the client. This provides experience evaluating responsibilities across different layers of a full-stack architecture.</p>
+      <p>The project also supports the security-mindset outcome. Administrative create, update, and delete operations require authentication, while application inputs are validated before database operations are performed. The maximum-price query rejects invalid negative values, helping protect the database from invalid application input.</p>
+      <p>The enhancement further contributes to the professional-communication outcome because the source-code organization, API structure, testing evidence, and accompanying narrative explain how the database enhancement works and why the design decisions were made. I do not need to substantially revise the outcome-coverage plan developed earlier in CS 499; instead, this enhancement strengthens my demonstration of database development, software engineering, security, and computing practices.</p>
+      <h3>Reflection on the Enhancement Process</h3>
+      <p>One of the most important lessons I learned from this enhancement was that successful database development involves more than writing queries. The data model, database values, API controller, validation rules, and application code must agree about the meaning and type of stored information.</p>
+      <p>A significant challenge occurred while implementing numerical price filtering. Direct MongoDB queries correctly identified 15 vacation packages priced at $2,000 or less, but the REST API initially returned inconsistent results. I used MongoDB aggregation operations to inspect the BSON types of the perPerson values and found 16 integers and four doubles, confirming that all 20 values were numeric.</p>
+      <p>The investigation then moved to the application layer. I inspected the Mongoose model and discovered that perPerson had been defined as a String. This created a mismatch between the database and application schemas. Changing perPerson to Number resolved the discrepancy and allowed the API to perform the same numerical filtering and sorting as MongoDB.</p>
+      <p>This debugging process strengthened my understanding of data integrity and schema consistency. Even when stored database values are correct, an incorrect application-level schema can affect how queries are cast and interpreted. I also gained additional experience troubleshooting a multi-layer application by distinguishing among MongoDB, Mongoose, Express routing, API controllers, and Node.js runtime issues.</p>
+      <p>Another challenge involved stale Node.js processes that remained bound to port 3000 while newer application changes were being tested. Identifying and terminating those processes demonstrated how runtime and environment problems can resemble source-code defects. This reinforced the importance of verifying the execution environment during debugging.</p>
+      <p>The enhancement also strengthened my understanding of the difference between client-side processing and database-side processing. The application can now perform filtering and sorting directly through MongoDB queries before records are returned through the REST API. This reduces unnecessary processing at the presentation layer and demonstrates a clearer separation of responsibilities between the database, server, and client components.</p>
+      <p>Overall, this enhancement gave me practical experience with MongoDB queries, Mongoose schemas, RESTful APIs, CRUD operations, validation, authentication, debugging, and data-integrity analysis. More importantly, it strengthened my understanding of how database design decisions influence an entire full-stack application. These skills will be valuable as I continue developing software applications and pursue work involving data analytics and data science.</p>
+      <p class="file-actions"><a class="button" href="documents/Enhancement_3_Narrative.docx" download>Download Enhancement Three Narrative</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>CS 499 Computer Science Capstone</p>
+    <p>Southern New Hampshire University</p>
+  </footer>
+</body>
+</html>

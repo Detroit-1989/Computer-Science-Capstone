@@ -1,0 +1,43 @@
+<div class = "trip-card">
+
+    <img
+        [src] = "'http://localhost:3000/images/' + trip.image"
+        [alt] = "trip.name"
+        class = "trip-image"
+
+    >
+
+    <h3>{{ trip.name }}</h3>
+
+    <p>
+        <strong>Resort:</strong>
+        {{ trip.resort }}
+    </p>
+
+    <p>
+        <strong>Length:</strong>
+        {{ trip.length }} 
+    </p>
+
+    <p>
+        <strong>Price per person:</strong>
+        ${{ trip.perPerson }}
+    </p>            
+
+    <p>
+        {{ trip.description}}
+    </p>
+
+    <button 
+        type = "button"
+        (click) = "onEdit()" >
+        Edit Trip
+    </button>
+
+    <button 
+        type = "button"
+        (click) = "onDelete()">
+        Delete Trip
+    </button>
+
+</div>

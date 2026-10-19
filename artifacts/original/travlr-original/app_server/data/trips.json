@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Gale Reef",
+        "length": "4 nights / 5 days",
+        "start": "2026-08-15",
+        "resort": "Emerald Bay Resort",
+        "perPerson": "799.00",
+        "image": "reef1.jpg",
+        "description": "Enjoy a relaxing tropical vacation at Galr Reef."
+    },
+    {
+       "name": "Dawson's Reef",
+        "length": "4 nights / 5 days",
+        "start": "2026-09-01",
+        "resort": "Blue Lagoon Resort",
+        "perPerson": "899.00",
+        "image": "reef2.jpg",
+        "description": "Experience clear water, beaches, and island attractions." 
+    }
+]

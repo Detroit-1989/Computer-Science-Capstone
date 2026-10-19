@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Environment variables and credentials
+.env
+.env.*
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Visual Studio
+.vs/
+
+# Angular generated files
+.angular/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Logs
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db

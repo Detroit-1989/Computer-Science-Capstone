@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CS 499 Enhancement Two narrative: algorithms and data structures in Travlr Getaways.">
+  <title>Enhancement Two | Algorithms and Data Structures</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <h1>Darius T. Wilder</h1>
+      <p class="subtitle">Enhancement Two: Algorithms and Data Structures</p>
+      <p class="university">CS 499 Computer Science Capstone · Southern New Hampshire University</p>
+    </div>
+  </header>
+  <nav class="main-navigation" aria-label="Portfolio navigation">
+    <a href="index.html">← Portfolio Home</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="index.html#code-review">Code Review</a>
+    <a href="index.html#software">Software Engineering</a>
+    <a href="index.html#databases">Databases</a>
+  </nav>
+  <main>
+    <section class="content-section" aria-labelledby="enhancement-two-title">
+      <h2 id="enhancement-two-title">Enhancement Two Narrative</h2>
+      <p><strong>Artifact:</strong> Travlr Getaways · Angular trip filtering and sorting</p>
+      <h3>Artifact Description</h3>
+      <p>The artifact selected for this enhancement is the Travlr Getaways full-stack web application. I originally created the application in CS 465: Full Stack Development. The project uses the MEAN stack and includes an Angular single-page administrative application, an Express and Node.js server, a RESTful API, Mongoose models, and a MongoDB database. The original application supported the management of travel-package records through create, read, update, and delete operations.</p>
+      <p>For CS 499, I enhanced the Angular trip-list portion of the application to demonstrate algorithms and data structures more directly. The original dataset contained four trip records. I expanded the working dataset to 20 vacation packages and added a client-side system that can filter and sort those records according to user-selected criteria. The enhancement includes resort filtering, trip-length filtering, a maximum-price threshold, alphabetical sorting, price sorting in ascending and descending order, reset behavior, and a dynamic result count.</p>
+      <h3>Justification for Inclusion and Description of the Enhancement</h3>
+      <p>I selected Travlr Getaways because it was already a complete full-stack application and provided a realistic environment in which algorithmic logic could be added to an existing software system. Rather than creating a disconnected algorithm demonstration, I wanted the enhancement to solve a practical problem: helping a user reduce a larger collection of vacation packages to the options that meet specific requirements. The application therefore demonstrates how algorithms and data structures can support user-facing decision-making inside a functioning web application.</p>
+      <p>The main data structure remains the Trip array received from the REST API. I preserved the original collection in a master trips array and created a separate filteredTrips array for the result set. This design prevents the filtering operation from destroying or permanently changing the original API data. It also makes reset behavior efficient because the application can recreate the displayed result set from the master array without requesting the data from MongoDB again.</p>
+      <p>I also introduced JavaScript Set objects to generate unique values for the resort and trip-length dropdown controls. Multiple MongoDB documents can contain the same resort or trip length, but a selection control should display each value only once. The algorithm maps the relevant field from the Trip array, places those values in a Set to remove duplicates, converts the Set back to an array, and sorts the resulting values for presentation. This is a practical use of a data structure because uniqueness is a direct requirement of the interface.</p>
+      <p>The central enhancement is a multi-criteria filtering algorithm. For each Trip object, the algorithm evaluates whether the trip satisfies the currently active resort, length, and maximum-price criteria. A criterion that the user leaves blank does not restrict the result. The individual Boolean conditions are combined so that a trip is included only when it satisfies every active requirement. The filtered result is then passed to the sorting logic. This permits combinations such as a selected resort, a selected trip duration, and a price ceiling to be evaluated together rather than as unrelated searches.</p>
+      <p>The sorting enhancement uses comparator functions to order the filtered result set by price from low to high, price from high to low, or trip name from A to Z. Filtering the collection requires examining the trip records and therefore operates in O(n) time with respect to the number of trips. The comparison-based sorting operation is generally O(n log n). With 20 records these costs are small, but documenting the complexity demonstrates how the design would behave as the dataset grows. The final enhancement therefore demonstrates array traversal, predicate-based filtering, uniqueness with Set, comparator-based sorting, preservation of an original data collection, and construction of a derived result set.</p>
+      <h3>Course Outcomes and Outcome-Coverage Update</h3>
+      <p>The enhancement met the primary course outcome I planned to address in Module One: designing and evaluating a computing solution using algorithmic principles and computer science practices while managing design trade-offs. The completed enhancement required me to select data structures that fit the problem, preserve the original collection, create a derived result set, combine multiple filter predicates, and choose sorting behavior that provides useful output to the user. I also evaluated the relative complexity of filtering and sorting instead of treating the implementation only as interface functionality.</p>
+      <p>The work also supports the program outcome focused on using well-founded techniques, skills, and tools to implement computing solutions that deliver value. The algorithms are integrated into an existing Angular, Express, and MongoDB application rather than operating in isolation. The result gives the user a practical method for finding vacation packages from a larger dataset and shows how algorithmic logic can improve the usefulness of a full-stack application.</p>
+      <p>My outcome-coverage plan does not require a major change. Outcome 3 remains the strongest alignment for this enhancement, with Outcome 4 serving as a secondary alignment because the algorithms were implemented within a functioning full-stack architecture. The professional communication outcome is also supported by the written narrative and ePortfolio presentation, but it is not the principal technical outcome demonstrated by this artifact. Security remains important to the overall Travlr application, but it was not the primary focus of the algorithms and data structures enhancement.</p>
+      <h3>Reflection on the Enhancement Process</h3>
+      <p>Enhancing the artifact reinforced the importance of working incrementally. Before implementing the new algorithms, I had to restore the Angular dependencies and confirm that the original application still compiled. I then added the enhancement in small stages: first the derived array, then the Set-based dropdown values, then filtering, sorting, reset behavior, and finally the larger dataset. This approach made it easier to identify whether a problem came from the new algorithm, the Angular template, the API, or the database.</p>
+      <p>Several challenges required troubleshooting across different layers of the application. Angular initially reported missing module errors because the project dependencies needed to be restored. During the interface work, small HTML syntax and naming errors affected compilation and event binding. The full trip list also appeared empty until the Express server and MongoDB connection were running. Later, one image reference did not match the actual filename, and the mongoimport utility was unavailable on the system. I addressed that limitation by using the Node.js and MongoDB environment already available in the project to load the new dataset instead of adding another dependency solely for the import process.</p>
+      <p>The enhancement also taught me to distinguish between data representation and algorithmic behavior. Trip length, for example, is stored as descriptive text such as “7 nights / 7 days,” so treating it as a simple numeric value would not produce meaningful numeric sorting. Adjusting the implementation to the real data format was a reminder that an algorithm should be designed around the structure and semantics of the data rather than around assumptions made during planning.</p>
+      <p>The most important lesson was that data structures and algorithms are most valuable when they solve an observable application problem. The Set structure is useful because it prevents duplicate options in the controls. The master and filtered arrays are useful because they preserve state while allowing the display to change. The filter algorithm is useful because it combines several customer requirements, and the sorting algorithm is useful because it turns a valid subset into an ordered result. Expanding the dataset from four to 20 records made these design choices easier to evaluate because the application now contains enough variation for the algorithms to produce meaningful subsets and orderings.</p>
+      <p>Overall, the completed enhancement strengthened my understanding of algorithm design within a full-stack application. I moved beyond retrieving and displaying database records and added a processing layer that transforms a collection according to user-selected constraints. The final artifact demonstrates that I can select appropriate data structures, reason about algorithmic complexity, integrate algorithms into an existing software architecture, test edge cases and combined conditions, and refine the implementation when the actual data or development environment differs from the original plan.</p>
+      <p><a class="button" href="documents/Enhancement_2_Narrative.docx" download>Download Enhancement Two Narrative</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>CS 499 Computer Science Capstone</p>
+    <p>Southern New Hampshire University</p>
+  </footer>
+</body>
+</html>

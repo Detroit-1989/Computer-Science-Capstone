@@ -1,0 +1,284 @@
+/* ==========================================
+   CS 499 PROFESSIONAL EPORTFOLIO
+   Southern New Hampshire University
+   ========================================== */
+
+/* Global Settings */
+
+:root {
+    --primary-color: #142b49;
+    --secondary-color: #2563a6;
+    --accent-color: #16a6b6;
+    --background-color: #f3f6fa;
+    --text-color: #293747;
+    --white: #ffffff;
+    --border-color: #dce4ee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* ==========================================
+   WEBSITE HEADER
+   ========================================== */
+
+.site-header {
+    background: linear-gradient( 135deg, #10243e, #21588c );
+    color: var(--white);
+    padding: 75px 25px;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.site-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.university {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 15px;
+}
+
+.specialization {
+    font-size: 1rem;
+    color: #bcecf4;
+}
+
+/* ==========================================
+   NAVIGATION MENU
+   ========================================== */
+
+.main-navigation {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+    .main-navigation a {
+        color: var(--white);
+        text-decoration: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+    }
+
+        .main-navigation a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .main-navigation a:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+
+/* ==========================================
+   MAIN CONTENT AREA
+   ========================================== */
+
+main {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+/* Individual Portfolio Sections */
+
+.content-section {
+    background-color: var(--white);
+    padding: 45px;
+    margin-bottom: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--border-color);
+    scroll-margin-top: 110px;
+}
+
+    /* Section Titles */
+
+    .content-section h2 {
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 25px;
+        padding-bottom: 12px;
+        border-bottom: 3px solid var(--accent-color);
+    }
+
+    /* Subsection Titles */
+
+    .content-section h3 {
+        color: var(--secondary-color);
+        font-size: 1.35rem;
+        margin-top: 30px;
+        margin-bottom: 12px;
+    }
+
+    /* Paragraph Formatting */
+
+    .content-section p {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    /* ==========================================
+   LINKS AND BUTTONS
+   ========================================== */
+
+    .content-section a {
+        color: var(--secondary-color);
+        font-weight: 600;
+    }
+
+        .content-section a:hover {
+            color: var(--accent-color);
+        }
+
+.button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--white) !important;
+    padding: 12px 22px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+    .button:hover {
+        background-color: var(--primary-color);
+    }
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+.site-footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 35px 20px;
+    margin-top: 50px;
+}
+
+    .site-footer p {
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+    }
+
+/* ==========================================
+   MOBILE AND TABLET RESPONSIVENESS
+   ========================================== */
+
+@media (max-width: 768px) {
+
+    .site-header {
+        padding: 50px 20px;
+    }
+
+        .site-header h1 {
+            font-size: 2.1rem;
+        }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .main-navigation {
+        position: static;
+    }
+
+        .main-navigation a {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+
+    main {
+        margin: 25px auto;
+        padding: 0 12px;
+    }
+
+    .content-section {
+        padding: 25px 20px;
+        scroll-margin-top: 20px;
+    }
+
+        .content-section h2 {
+            font-size: 1.6rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.2rem;
+        }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .main-navigation a,
+    .button {
+        transition: none;
+    }
+}
+
+/* ==========================================
+   CODE REVIEW VIDEO PRESENTATION
+   ========================================== */
+
+#code-review video {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    margin: 20px auto 35px;
+    border-radius: 10px;
+    background-color: #000000;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+#code-review h3 {
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+#code-review p {
+    line-height: 1.8;
+}

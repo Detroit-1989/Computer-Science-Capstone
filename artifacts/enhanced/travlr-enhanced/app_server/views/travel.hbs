@@ -1,0 +1,24 @@
+<h1>{{title}}</h1>
+
+<div id = "travel">
+    {{#each trips}}
+        <div class = "trip">
+            <img src = "/images/{{image}}" alt = "{{name}}">
+
+            <h2>{{name}}</h2>
+
+            <p>{{description}}</p>
+
+            <p> <strong>Length:</strong> {{length}} </p>
+
+            <p><strong>Start date:</strong>{{start}} </p>
+
+            <p><strong>Resort:</strong>{{resort}}</p>
+
+            <p><strong>Price:</strong>${{perPerson}} per person </p>
+
+
+
+        </div>
+    {{/each}}
+</div>

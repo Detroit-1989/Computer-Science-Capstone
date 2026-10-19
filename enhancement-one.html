@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhancement One | Software Design and Engineering</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <h1>Darius T. Wilder</h1>
+      <p class="subtitle">Enhancement One: Software Design and Engineering</p>
+      <p class="university">CS 499 Computer Science Capstone · Southern New Hampshire University</p>
+    </div>
+  </header>
+  <nav class="main-navigation" aria-label="Portfolio navigation">
+    <a href="index.html">← Portfolio Home</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="index.html#code-review">Code Review</a>
+    <a href="index.html#algorithms">Algorithms</a>
+    <a href="index.html#databases">Databases</a>
+  </nav>
+  <main>
+    <section class="content-section" aria-labelledby="enhancement-one-title">
+      <h2 id="enhancement-one-title">Enhancement One Narrative</h2>
+      <p><strong>Artifact:</strong> Travlr Getaways · MEAN-stack full-stack web application</p>
+      <h3>Artifact Description</h3>
+      <p>The artifact I selected for my Software Design and Engineering enhancement is the Travlr Getaways full-stack web application, which I originally developed in CS 465: Full Stack Development in 2026. The project was designed as a travel website that includes both a public-facing customer website and an administrative single-page application. The application features the MEAN stack, incorporating MongoDB, Express.js, Angular, and Node.js.</p>
+      <p>The application demonstrates a layered full-stack architecture. MongoDB offers persistent storage for travel packages and user information, while Mongoose provides the models used to interact with that data. Express.js and Node.js deliver the server-side application and RESTful API. Angular provides an administrative interface through reusable components and services. Together, these technologies allow information to move between the database, API, server, and client interface.</p>
+      <p>The administrative portion of the application also incorporates authentication and CRUD functionality. An authenticated administrator can work with travel packages by creating, retrieving, updating, and deleting records through the Angular interface.</p>
+      <p>For CS 499, I preserved the original Travlr Getaways project and created a separate enhanced version. This allows the original implementation and my enhanced artifact to demonstrate the progression of my software engineering abilities.</p>
+      <h3>Justification for Inclusion and Improvements</h3>
+      <p>I designated Travlr Getaways for my ePortfolio because it is one of the most comprehensive software engineering artifacts I developed during the Computer Science program. It proves more than the implementation of an isolated programming concept. The project required me to integrate front-end development, server-side programming, RESTful services, database persistence, authentication, and application security into a functioning system.</p>
+      <p>Several components demonstrate my software development abilities. The Angular application uses components and services to separate user-interface responsibilities from data-access logic. The Express backend uses routes and controllers to organize API functionality. Mongoose models define the structure of persistent data and provide an interface between the application and MongoDB. RESTful endpoints provide communication between the Angular client and server.</p>
+      <p>The authentication system provides another important example. Administrator passwords are not stored as plaintext. The user model generates random salt and derives a password hash using PBKDF2. During authentication, the supplied password is processed using the stored salt and compared with the stored hash. Successful authentication generates a JSON Web Token that the client can use when making authenticated requests.</p>
+      <p>For my enhancement, I improved the artifact by strengthening and validating the administrative workflow and organizing the application as a more portfolio-ready software engineering artifact. I reviewed the interaction among the Angular client, authentication services, Express API, controllers, models, and MongoDB database rather than treating each feature as an independent piece of code.</p>
+      <p>I also performed end-to-end testing of the application. I used Postman to verify registration and login functionality and confirmed that successful authentication returned a token. I tested the application&#x27;s CRUD operations and used browser developer tools to inspect HTTP requests and responses. Successful POST, PUT, and DELETE requests demonstrated that the administrative application continued to communicate correctly with the REST API after authentication and security functionality was incorporated.</p>
+      <p>These improvements showcase my ability not only to write software but also to evaluate, test, debug, secure, and maintain an existing full-stack system.</p>
+      <h3>Course Outcome Coverage</h3>
+      <p>The enhancement addressed the course outcomes identified in my enhancement plan and provided evidence of progress toward several Computer Science program outcomes.</p>
+      <p>The strongest connection is to Course Outcome Four: demonstrating an ability to use well-founded and innovative techniques, skills, and tools in computing practices to implement computer solutions that deliver value and accomplish industry-specific goals. Travlr Getaways demonstrates this outcome through the integration of Angular, TypeScript, JavaScript, Node.js, Express.js, MongoDB, Mongoose, RESTful APIs, Postman, browser developer tools, and Git. Instead of using these technologies independently, I integrated them into a full-stack architecture that supports an administrative travel-management workflow.</p>
+      <p>This enhancement also demonstrates progress toward Course Outcome Five: developing a security mindset that anticipates adversarial exploits in software architecture and design, exposes potential vulnerabilities, mitigates design flaws, and supports the privacy and security of data and resources. Authentication, password hashing and salting, token generation, protected administrative operations, and testing authenticated requests demonstrate that security is part of the application&#x27;s architecture rather than simply a user-interface feature.</p>
+      <p>I also made progress toward the second outcome involving professional-quality oral, written, and visual communication. The artifact, code review, enhancement narrative, source-control history, testing evidence, and ePortfolio presentation provide different forms of technical communication intended to explain both the application and my development process.</p>
+      <p>The enhancement also contributes to the third outcome because designing the application required evaluating computing solutions and making architectural choices concerning component responsibilities, data flow, API design, authentication, and persistence. However, I intend to demonstrate the algorithmic and data-structure aspects of this outcome more extensively through my separate Algorithms and Data Structures enhancement.</p>
+      <p>My outcome-coverage plan therefore remains largely consistent with the plan established earlier in the course. This enhancement provides particularly strong evidence for software engineering and security, while later enhancements will provide more focused evidence for algorithms, data structures, and databases.</p>
+      <h3>Reflection on the Enhancement Process</h3>
+      <p>Improving Travlr Getaways helped me recognize the difference between making individual features work and understanding a software system as a complete architecture. When I originally developed the project in CS 465, much of my attention was directed toward completing individual requirements such as creating Angular components, connecting MongoDB, implementing REST endpoints, and adding authentication. Revisiting the application during CS 499 required me to understand how those components depend on one another.</p>
+      <p>One of the most important lessons involved tracing data through the complete application. A request originating from the Angular interface may pass through a service, HTTP request, Express route, controller, Mongoose model, and MongoDB database before returning a response to the client. Understanding that sequence made troubleshooting more systematic because I could isolate the layer responsible for a problem rather than changing code without first identifying its source.</p>
+      <p>Testing reinforced this lesson. Postman allowed me to test the API independently from the Angular interface, while Chrome Developer Tools allowed me to inspect requests generated by the application itself. This helped me distinguish client-side problems from API or database problems. Verifying HTTP status codes such as successful 200 and 201 responses also provided concrete evidence that the application&#x27;s operations were executing correctly.</p>
+      <p>Authentication was another important learning experience. Examining the relationship among password hashing, salts, credential validation, JSON Web Tokens, local storage, and protected requests improved my understanding of authentication as a process that spans multiple layers of an application. I learned that displaying a login form alone does not provide security; authentication must be enforced through the server-side architecture and the handling of protected API operations.</p>
+      <p>I also encountered challenges involving the development environment and source control. For example, when preparing the enhanced artifact for Git, Visual Studio&#x27;s .vs directory contained local files that Git could not access and that did not belong in source control. I addressed this by configuring .gitignore to exclude development-environment files, node_modules, and environment files. This experience reinforced the importance of distinguishing source code from machine-specific files, generated dependencies, and potentially sensitive configuration data.</p>
+      <p>Finally, I preserved the original project separately from the enhanced artifact and used a dedicated cs499-enhancement-one Git branch for the completed enhancement. This gave me practical experience with maintaining an auditable development history and reinforced the value of version control when modifying an existing software system.</p>
+      <p>Overall, this enhancement strengthened my understanding of full-stack software engineering, authentication, testing, debugging, application architecture, and version control. More importantly, it demonstrated my growth from completing individual programming requirements toward evaluating and maintaining a complete software system.</p>
+      <p><a class="button" href="documents/Enhancement_1_Narrative.docx" download>Download Enhancement One Narrative</a></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>CS 499 Computer Science Capstone</p>
+    <p>Southern New Hampshire University</p>
+  </footer>
+</body>
+</html>

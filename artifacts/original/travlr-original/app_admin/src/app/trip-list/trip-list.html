@@ -1,0 +1,33 @@
+<h2>Available Trips</h2>
+
+<p>Total trips: {{ trips.length }}</p>
+
+<app-trip-add
+
+  (added)="tripAdded($event)">
+  
+</app-trip-add>
+
+<hr>
+
+<app-trip-card
+
+    *ngFor = "let trip of trips"
+    [trip] = "trip"
+    (edit) = "editTrip($event)"
+    (delete) = "deleteTrip($event)">
+
+</app-trip-card>
+
+<app-trip-edit
+
+    *ngIf = "selectedTrip"
+    [trip] = "selectedTrip"
+    (saved) = "tripUpdated($event)">
+
+</app-trip-edit>
+
+
+
+
+

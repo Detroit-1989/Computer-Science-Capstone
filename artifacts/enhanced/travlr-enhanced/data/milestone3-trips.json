@@ -1,0 +1,211 @@
+[
+
+  {
+
+    "code": "GRE01",
+    "name": "Green Hills",
+    "length": "4 nights / 5 days",
+    "start": "2026-10-05",
+    "resort": "Green Hills Resort and Lodging",
+    "perPerson": 699,
+    "image":"Tropical.jpg",
+    "description": "A budget-friendly coastal getaway with beaches, local dining, and harbor attractions."
+
+  },
+
+  {
+
+    "code": "MAR02",
+    "name": "Marble Zone",
+    "length": "6 nights / 5 days",
+    "start": "2026-10-12",
+    "resort": "Marble Zone Tropical Resort",
+    "perPerson": 849,
+    "image": "Coastal.jpg",
+    "description": "A tropical vacation featuring clear water, beaches, snorkeling, and island excursions."
+
+  },
+
+  {
+
+    "code": "SPR03",
+    "name": "Spring Yard Retreat",
+    "length": "7 nights / 7 days",
+    "start": "2026-10-20",
+    "resort": "Spring Yard Crystal Resorts",
+    "perPerson": 1099,
+    "image": "suite.jpg",
+    "description": "A relaxing week along the coast with resort amenities and nearby outdoor activities."
+
+  },
+
+  {
+
+    "code": "STR04",
+    "name": "Star Light",
+    "length": "8 nights / 8 days",
+    "start": "2026-11-01",
+    "resort": "Star Light Coast and Resorts",
+    "perPerson": 1299,
+    "image": "Tropical.jpg",
+    "description": "An extended island vacation conbining beaches, sight-seeing, and outdoor activites."
+
+  },
+
+  {
+
+    "code": "EMH05",
+    "name": "Emerald Hills",
+    "length": "4 nights / 5 days",
+    "start": "2026-10-05",
+    "resort": "Green Hills Resort and Lodging",
+    "perPerson": 699,
+    "image": "Rainforest.jpg",
+    "description": "An affordable coastal vacation ideal for travelers seeking a short relaxing getaway."
+
+  },
+
+  {
+
+    "code": "CAS06",
+    "name": "Casino Nights",
+    "length": "6 nights / 5 days",
+    "start": "2026-11-15",
+    "resort": "Casino Nights Tropical Resort",
+    "perPerson": 949,
+    "image": "Casino.jpg",
+    "description": "A tropical resort package with beaches, swimming, snorkeling, and coastal activities."
+
+  },
+
+  {
+
+    "code": "ANG07",
+    "name": "Angel Island",
+    "length": "7 nights / 7 days",
+    "start": "2026-11-22",
+    "resort": "Angel Island and Mystic Cave Resorts",
+    "perPerson": 1199,
+    "image": "Tropical.jpg",
+    "description": "A full-week resort experience combining relaxation, recreation, and coastal sight-seeing."
+
+  },
+
+  {
+
+    "code": "MAR08",
+    "name": "Marble Garden",
+    "length": "8 nights / 8 days",
+    "start": "2026-12-21",
+    "resort": "Marble Garden Resorts",
+    "perPerson": 1399,
+    "image": "Coastal.jpg",
+    "description": "An eight-day coastal exploration package with resort accomodations and excursions."
+
+  },
+
+  {
+
+    "code": "CAR09",
+    "name": "Carnival Nights",
+    "length": "9 nights / 8 days",
+    "start": "2026-12-10",
+    "resort": "Carnival Nights Lodging",
+    "perPerson": 1599,
+    "image": "rooms.png",
+    "description": "A longer accomodation featurning premium lodging and a range of activities."
+
+  },
+
+  {
+
+    "code": "ICE10",
+    "name": "Ice Cap Expedition",
+    "length": "9 nights / 8 days",
+    "start": "2026-12-18",
+    "resort": "Ice Cap and Turquiose Hill Resorts",
+    "perPerson": 1699,
+    "image": "Winter.jpg",
+    "description": "An extended coastal package designed for travelers interested in wintertime recreation."
+
+  },
+
+  {
+
+    "code": "AUQ11",
+    "name": "Aqua Lake Journey",
+    "length": "10 nights / 9 days",
+    "start": "2027-01-05",
+    "resort": "Aqua Lake Coast and Resorts",
+    "perPerson": 1899,
+    "image": "Tropical.jpg",
+    "description": "A nine-day resort vacation with sightseeing, outdoor recreation, and coastal experiences."
+
+  },
+
+  {
+
+    "code": "DIA12",
+    "name": "Diamond Dust",
+    "length": "10 nights / 9 days",
+    "start": "2027-01-15",
+    "resort": "Diamond Dust Tropical Resort",
+    "perPerson": 2099,
+    "image": "rooms.png",
+    "description": "A premium tropical vacation offering upgraded accomodations and extended resort access."
+
+  },
+
+  {
+
+    "code": "TWN13",
+    "name": "Twinkle Park",
+    "length": "12 nights / 10 days",
+    "start": "2027-02-01",
+    "resort": "Twinkle Park Resort and Lodging ",
+    "perPerson": 2299,
+    "image": "Casino.jpg",
+    "description": "A ten-day coastal vacation combining premium lodging, sightseeing, and recreational activities."
+
+  },
+
+  {
+
+    "code": "SAN14",
+    "name": "Sand Ocean",
+    "length": "12 nights / 10 days",
+    "start": "2027-02-12",
+    "resort": "Sand Ocean Resorts",
+    "perPerson": 2499,
+    "image": "Hammock.jpg",
+    "description": "A premium extended vacation featuring coastal acommodations and curated excursions."
+
+  },
+
+  {
+
+    "code": "RED15",
+    "name": "Red Mountain",
+    "length": "12 nights / 10 days",
+    "start": "2027-03-01",
+    "resort": "Red Mountain Coast and Resorts",
+    "perPerson": 2699,
+    "image": "Mountain.jpg",
+    "description": "An extended high-end adventure package with resort lodging and multiple outdoor excursions."
+
+  },
+
+  {
+
+    "code": "GRN16",
+    "name": "Green Forest Signature Vacation",
+    "length": "12 nights / 10 days",
+    "start": "2027-03-15",
+    "resort": "Green Forest Tropical Resort",
+    "perPerson": 2999,
+    "image": "Rainforest.jpg",
+    "description": "A premium ten-day tropical vacation with luxury accomodations and comprehensive resort activities."
+
+  }
+
+]
